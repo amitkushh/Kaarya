@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import connectDB from "./db/mongoose";
 
 //Custom Routes
+import userRoutes from "./routes/user.routes";
+import taskRoutes from "./routes/task.routes";
 
 dotenv.config();
 const port = process.env.PORT || 4000;
@@ -28,6 +30,8 @@ app.get("/", (req, res) => {
 });
 
 //Custom Apies
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/task", taskRoutes);
 
 connectDB()
   .then(() => {
